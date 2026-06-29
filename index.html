@@ -13,53 +13,35 @@
     --dim: #7878a0;
     --accent: #6c5ce7;
     --green: #00d68f;
-    --red: #ff6b6b;
     --gold: #ffd93d;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+    font-family: system-ui, -apple-system, sans-serif;
     line-height: 1.6;
     min-height: 100vh;
   }
   .container { max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; }
 
-  /* Hero */
   .hero {
     text-align: center;
     padding: 4rem 0 3rem;
     border-bottom: 1px solid var(--border);
   }
-  .hero h1 {
-    font-size: 2.5rem;
-    color: #fff;
-    letter-spacing: -0.5px;
-    margin-bottom: 0.5rem;
-  }
-  .hero .tagline {
-    color: var(--dim);
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-  }
-  .hero .stats {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
+  .hero h1 { font-size: 2.5rem; color: #fff; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+  .hero .tagline { color: var(--dim); font-size: 0.95rem; margin-bottom: 1.5rem; }
+  .hero .stats { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
   .stat { text-align: center; }
   .stat .num { font-size: 1.8rem; font-weight: 700; color: var(--accent); }
   .stat .label { font-size: 0.75rem; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; }
 
-  /* Sections */
   section { padding: 2.5rem 0; border-bottom: 1px solid var(--border); }
   section:last-of-type { border-bottom: none; }
   section h2 { font-size: 1.3rem; color: #fff; margin-bottom: 1.2rem; }
 
-  /* Pricing cards */
-  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
   .pricing-card {
     background: var(--card);
     border: 1px solid var(--border);
@@ -71,20 +53,18 @@
   .pricing-card h3 { font-size: 1rem; color: #fff; margin-bottom: 0.5rem; }
   .pricing-card .price { font-size: 2rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem; }
   .pricing-card .price.free { color: var(--green); }
-  .pricing-card .det { color: var(--dim); font-size: 0.8rem; margin-bottom: 1rem; }
+  .pricing-card .det { color: var(--dim); font-size: 0.8rem; }
 
-  /* How it works */
   .steps { display: grid; gap: 1rem; }
   .step { display: flex; gap: 1rem; align-items: flex-start; }
   .step-num {
     background: var(--accent); color: #fff;
-    width: 28px; height: 28px; border-radius: 50%;
+    min-width: 28px; height: 28px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     font-size: 0.85rem; font-weight: 700; flex-shrink: 0;
   }
   .step-text strong { color: #fff; }
 
-  /* Footer */
   footer {
     text-align: center;
     padding: 2rem 1.5rem;
@@ -92,27 +72,29 @@
     font-size: 0.8rem;
     border-top: 1px solid var(--border);
   }
-  footer a { color: var(--accent); text-decoration: none; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-  /* Buttons */
   .btn {
     display: inline-block;
-    padding: 0.75rem 2rem;
+    padding: 0.85rem 2rem;
     border-radius: 6px;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1rem;
     text-decoration: none;
     cursor: pointer;
     border: none;
     font-family: inherit;
+    background: var(--accent); color: #fff;
+    margin: 0.25rem;
+    transition: background 0.2s;
   }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-secondary { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .btn:hover { background: #7c6df0; text-decoration: none; }
+  .btn-outline { background: transparent; border: 2px solid var(--accent); color: var(--accent); }
+  .btn-outline:hover { background: var(--accent); color: #fff; }
 
-  /* Links */
-  a { color: var(--accent); }
+  .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 1.5rem; }
 
-  /* Alert banner */
   .alert {
     background: var(--card);
     border: 1px solid var(--gold);
@@ -121,101 +103,81 @@
     margin-bottom: 2rem;
     color: var(--gold);
     font-size: 0.9rem;
+    text-align: center;
   }
+  .alert a.btn { margin-top: 0.75rem; }
 </style>
 </head>
 <body>
 
 <div class="container">
-
-  <!-- Hero -->
   <div class="hero">
     <h1>Voss Security</h1>
     <p class="tagline">Smart Contract Auditing — 200+ Protocols Audited. $200M+ Secured.</p>
     <div class="stats">
-      <div class="stat"><div class="num">7</div><div class="label">Chains Scanned</div></div>
-      <div class="stat"><div class="num">200+</div><div class="label">Protocols Audited</div></div>
+      <div class="stat"><div class="num">7</div><div class="label">Chains</div></div>
+      <div class="stat"><div class="num">200+</div><div class="label">Audited</div></div>
       <div class="stat"><div class="num">$200M+</div><div class="label">Secured</div></div>
+    </div>
+    <div class="cta-row">
+      <a href="http://31.97.147.157:8090/leaderboard.html" class="btn">View Leaderboard →</a>
+      <a href="http://31.97.147.157:8095" class="btn btn-outline">Order an Audit →</a>
     </div>
   </div>
 
-  <!-- CTA -->
-  <div class="alert" style="text-align:center;font-size:1rem;">
-    <strong>Get Your Contract Scored — Free</strong><br>
-    <span style="color:var(--dim)">Every new contract on Ethereum, Base, Arbitrum, Optimism, Polygon, Avalanche & BSC is automatically analyzed.</span><br><br>
-    <a href="http://31.97.147.157:8090/leaderboard.html" class="btn btn-primary">View Public Leaderboard →</a>
-  </div>
-
-  <!-- Pricing -->
   <section>
     <h2>Services & Pricing</h2>
     <div class="pricing-grid">
       <div class="pricing-card">
         <h3>Free Scan</h3>
         <div class="price free">$0</div>
-        <div class="det">Voss Score + Leaderboard<br>10 vulnerability detectors<br>Public listing</div>
+        <div class="det">Voss Score + Leaderboard<br>10 vulnerability detectors</div>
       </div>
       <div class="pricing-card">
         <h3>Quick Audit</h3>
         <div class="price">$50</div>
-        <div class="det">Automated 20-detector scan<br>Private report<br>Remediation guidance</div>
+        <div class="det">20-detector scan<br>Private report<br>Remediation guidance</div>
       </div>
       <div class="pricing-card featured">
         <h3>Full Audit</h3>
         <div class="price">$2,500</div>
-        <div class="det">Manual + Automated<br>100+ detectors<br>Line-by-line review<br>Exploit simulation</div>
+        <div class="det">Manual + Automated<br>100+ detectors<br>Line-by-line review</div>
       </div>
       <div class="pricing-card">
         <h3>Continuous</h3>
         <div class="price">$500<span style="font-size:0.8rem;color:var(--dim)">/mo</span></div>
-        <div class="det">Real-time upgrade detection<br>Instant re-audit on changes<br>Priority support</div>
+        <div class="det">Real-time monitoring<br>Instant re-audit<br>Priority support</div>
       </div>
     </div>
   </section>
 
-  <!-- How it works -->
   <section>
     <h2>How It Works</h2>
     <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-text"><strong>DeployMonitor scans 7 chains</strong> — every new contract is detected within 5 minutes of deployment.</div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-text"><strong>Scanner Engine runs 10+ detectors</strong> — reentrancy, access control, delegatecall, oracle manipulation, timestamp dependence and more.</div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-text"><strong>Voss Score is published</strong> — 0–100 score with letter grade (A+ through F). Public leaderboard, free for everyone.</div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div class="step-text"><strong>Deployers are notified</strong> — if we find concerns, you hear about it. Free quick review available. Full audit if needed.</div>
-      </div>
+      <div class="step"><div class="step-num">1</div><div class="step-text"><strong>DeployMonitor scans 7 chains</strong> — every new contract detected within 5 minutes.</div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Scanner Engine runs 10+ detectors</strong> — reentrancy, access control, delegatecall, oracle manipulation.</div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Voss Score published</strong> — 0–100 score, A+ through F. Public and free.</div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Deployers notified</strong> — if we find concerns, you hear about it.</div></div>
     </div>
   </section>
 
-  <!-- Why Voss -->
   <section>
     <h2>Why Voss Security?</h2>
     <p style="color:var(--dim);margin-bottom:1rem;">
-      Founded by <strong style="color:#fff;">Elias Voss</strong> — 40 years of systems engineering. Blockchain since 2015.
+      Founded by <strong style="color:#fff;">Elias Voss</strong> — 40 years systems engineering. Blockchain since 2015.
       Built the first flash loan architecture before it had a name. Audited 200+ protocols.
-      Personally recovered over $200M from exploits.
+      Recovered over $200M from exploits.
     </p>
     <p style="color:var(--dim);">
-      We don't do buzzwords. We don't "revolutionize" or "disrupt." We find bugs — before someone else does.
+      No buzzwords. No "revolutionize." We find bugs — before someone else does.
     </p>
   </section>
 
-  <!-- CTA bottom -->
   <section style="text-align:center;">
     <h2>Ready to secure your contracts?</h2>
-    <a href="http://31.97.147.157:8095" class="btn btn-primary" style="font-size:1.1rem;padding:1rem 3rem;">Order an Audit →</a>
-    <p style="margin-top:1rem;color:var(--dim);">Or email: voss@vosssecurity.io</p>
+    <a href="http://31.97.147.157:8095" class="btn" style="font-size:1.1rem;padding:1rem 3rem;">Get an Audit →</a>
+    <p style="margin-top:1rem;color:var(--dim);">voss@vosssecurity.xyz</p>
   </section>
-
 </div>
 
 <footer>
@@ -225,4 +187,3 @@
 
 </body>
 </html>
-<!-- force rebuild Mon Jun 29 02:17:04 UTC 2026 -->
